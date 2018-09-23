@@ -78,7 +78,7 @@ def main():
 
 	weights = list(tf.Session().run(tf.truncated_normal([feature_vec_dim+1], stddev=0.1))) #initializing the weights using truncated normal distribution
 	print('Initial weights : ',weights)
-	input_data = 'xor_type.csv'#input('Enter file name for training samples : ')
+	input_data = 'ring_dist.csv'#input('Enter file name for training samples : ')
 
 	file = open(input_data,"r")
 	csv_file = csv.reader(file)

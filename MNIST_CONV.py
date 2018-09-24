@@ -1,6 +1,6 @@
 import numpy as np
 
-from keras.models import Sequential
+from keras.models import Sequential, Conv2D
 from keras.layers import Dense, Activation
 
 import csv
@@ -39,7 +39,7 @@ class mlp:
 	def create_model(self):
 		
 		self.model = Sequential()
-		self.model.add(Conv2D(256, (3, 3), padding='same',input_shape=(28,28)))
+		self.model.add(Conv2D(256, (3, 3), padding='same',input_shape=(28,28,1)))
 		self.model.add(Activation("relu"))
 		self.model.add(Conv2D(512, (3, 3), padding='same'))
 		self.model.add(Activation("relu"))

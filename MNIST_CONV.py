@@ -1,7 +1,7 @@
 import numpy as np
 
-from keras.models import Sequential, Conv2D
-from keras.layers import Dense, Activation
+from keras.models import Sequential
+from keras.layers import Dense, Activation, Conv2D, Flatten
 
 import csv
 from sklearn.datasets import load_iris
@@ -24,8 +24,8 @@ class mlp:
 	def load_data(self):
 
 		(X_train, Y_train), (X_test, Y_test) = mnist.load_data()
-		X_train = X_train.reshape(60000, 784)
-		X_test = X_test.reshape(10000, 784)
+		X_train = X_train.reshape(60000, 28, 28, 1)
+		X_test = X_test.reshape(10000, 28, 28, 1)
 		
 		print('X_train shape : ', X_train.shape)
 		print('X_test shape : ', X_test.shape)
@@ -39,7 +39,7 @@ class mlp:
 	def create_model(self):
 		
 		self.model = Sequential()
-		self.model.add(Conv2D(256, (3, 3), padding='same',input_shape=(28,28,1)))
+		self.model.add(Conv2D(256, (3, 3), padding='same',input_shape=(28,28, 1)))
 		self.model.add(Activation("relu"))
 		self.model.add(Conv2D(512, (3, 3), padding='same'))
 		self.model.add(Activation("relu"))
